@@ -4,12 +4,16 @@ plugins {
 
 android {
     namespace 'com.example.vcam'
-    compileSdk 31
+    compileSdk 33
+
+    buildFeatures {
+        buildConfig true
+    }
 
     defaultConfig {
         applicationId "com.example.vcam"
         minSdk 21
-        targetSdk 26
+        targetSdk 33
         versionCode 28
         versionName "4.4"
 
@@ -22,14 +26,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
     compileOnly 'de.robv.android.xposed:api:82'
     compileOnly 'de.robv.android.xposed:api:82:sources'
-
 }
