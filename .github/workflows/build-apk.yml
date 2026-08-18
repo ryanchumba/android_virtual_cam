@@ -30,4 +30,3 @@ jobs:
         with:
           name: vcam-release-apk
           path: app/build/outputs/apk/release/*.apk
-x
