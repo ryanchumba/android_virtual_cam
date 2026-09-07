@@ -1,3 +1,8 @@
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import android.os.Handler;
+import android.os.Looper;
+
 package com.example.vcam;
 
 
@@ -42,6 +47,12 @@ import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 public class HookMain implements IXposedHookLoadPackage {
+
+    private static final Executor FRAME_PROCESSOR = Executors.newSingleThreadExecutor(r -> {
+        Thread t = new Thread(r, "VCAM-FrameWorker");
+        t.setPriority(Thread.NORM_PRIORITY - 1);
+        return t;
+    });
     public static Surface mSurface;
     public static SurfaceTexture mSurfacetexture;
     public static MediaPlayer mMediaPlayer;
